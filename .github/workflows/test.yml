@@ -42,7 +42,8 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Ciao
+      - name: setup pyenv
         uses: "gabrielfalcao/pyenv-action@v5"
+      - name: run buildout
         run: |
           cd ${BUILDOUT_PATH} && buildout -N
