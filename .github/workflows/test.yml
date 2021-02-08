@@ -44,4 +44,4 @@ jobs:
     steps:
       - name: Ciao
         run: |
-          echo "Ciao mondo"
+          echo "Ciao mondo: ${BUILDOUT_PATH}"
