@@ -3,6 +3,13 @@ name: Test run buildout
 on: [push]
 
 jobs:
+  prova:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: echo "::set-output name=matrix::{\"include\":[{\"label\":\"foo\"},{\"label\":\"bar\"}]}"
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -40,9 +47,13 @@ jobs:
         run: |
           buildout -Nc development.cfg -t 4
   build:
+    needs: prova
+    strategy:
+      matrix: ${{fromJson(needs.prova.outputs.matrix)}}
     runs-on: self-hosted
     steps:
       - name: run buildout
         run: |
           # cd ${BUILDOUT_PATH} && ./bin/develop rb
           echo "QUI: ${BUILDOUT_PATH}"
+          echo ${{ matrix.label }}
