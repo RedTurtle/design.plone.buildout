@@ -1,0 +1,11 @@
+name: Test run buildout
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Ciao
+        run: |
+          echo "Ciao mondo"
