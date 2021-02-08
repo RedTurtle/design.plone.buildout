@@ -44,4 +44,5 @@ jobs:
     steps:
       - name: run buildout
         run: |
-          cd ${BUILDOUT_PATH} && ./bin/develop rb
+          # cd ${BUILDOUT_PATH} && ./bin/develop rb
+          echo "QUI: ${BUILDOUT_PATH}"
