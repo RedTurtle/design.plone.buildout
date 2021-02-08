@@ -38,7 +38,7 @@ jobs:
           buildout -Nc staging.cfg -t 3
       - name: Install development
         run: |
-          buildout -Nc development.cfg -t 3
+          buildout -Nc development.cfg -t 4
   build:
     runs-on: self-hosted
     steps:
